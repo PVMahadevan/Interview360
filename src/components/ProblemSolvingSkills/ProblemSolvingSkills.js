@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const ProblemSolvingSkills = ({ keywords }) => {
+const ProblemSolvingSkills = ({ keywords }, {designation}) => {
   const [problemSolvingQuestions, setProblemSolvingQuestions] = useState([]);
 
   const generateProblemSolvingQuestions = () => {

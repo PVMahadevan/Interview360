@@ -2,20 +2,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px;
-  background-image: url('bg-image.jpg'); /* Replace 'your-image-url.jpg' with the URL or path to your desired background image */
+  background-image: url('bg-image.jpg');
   background-size: cover;
   min-height: 100vh;
 }
 
-.logo {
-  width: 150px; /* Adjust the width according to your logo's dimensions */
-  height: 150px; /* Adjust the height according to your logo's dimensions */
-  margin-bottom: 20px;
-}
-
 .App-header {
   margin-bottom: 20px;
+  text-align: flex;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
 }
 
 .input-container input {
@@ -37,57 +38,14 @@
 
 .question-container {
   margin-bottom: 25px;
-  background-color: #ffffff;
+  background-color: #dkdkkg;
   padding: 20px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
-}
-
-.question-container h2 {
-  margin-bottom: 10px;
-}
-
-.question-container p {
-  margin-bottom: 5px;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-button {
-  margin-top: 10px;
-  margin-left: 5px;
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  align:center;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-.input-container label {
-  margin-right: 5px;
-  margin-bottom: 10px;
-}
-
-label[for="keywords"] {
-  margin-left: 5px;
-}
-
-/*For Questions Container*/
-
-.question-container {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .question-container h2 {
@@ -130,3 +88,82 @@ label[for="keywords"] {
   font-size: 14px;
 }
 
+button {
+  margin-top: 10px;
+  margin-left: 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.input-container label {
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+label[for="keywords"] {
+  margin-left: 5px;
+}
+
+.logo-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.logo-container img {
+  width: 100px;
+  height: auto;
+}
+
+li {
+  position: relative;
+}
+
+/* Carousel Styling */
+
+.carousel-root {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.carousel .slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.carousel .slide > div {
+  margin: 0 auto;
+}
+
+.carousel .control-dots {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.carousel .control-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #888888;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel .control-dots .dot.selected {
+  background-color: #007bff;
+}

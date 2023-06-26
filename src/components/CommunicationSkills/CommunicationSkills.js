@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CommunicationSkills = ({ keywords }) => {
+const CommunicationSkills = ({ keywords }, {designation}) => {
   const [communicationSkillsQuestions, setCommunicationSkillsQuestions] = useState([]);
 
   const generateCommunicationSkillsQuestions = () => {

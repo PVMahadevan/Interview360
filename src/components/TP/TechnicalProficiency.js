@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 
-const TechnicalProficiency = () => {
+const TechnicalProficiency = ({ keywords }, {designation}) => {
     const [questions, setQuestions] = useState([]);
 
       const generateQuestions = () => {
@@ -13,7 +13,7 @@ const TechnicalProficiency = () => {
           messages: [
             {
               role: 'user',
-              content: `Instruction: Generate 3 interview questions each for the following skills: Technical Proficiency, Collaboration and Interpersonal Skills, Continuous Learning Mindset, Communication Skills, Problem-Solving Skills, Adaptability and Flexibility, Leadership Skills. Think step by step to evaluate the candidate better.`,
+              content: `Instruction: Generate 3 interview questions each for the following skills: Technical Proficiency. Think step by step to evaluate the candidate better to analyze his technical capabilities for the particular role based on the ${keywords}.`,
             },
           ],
         };

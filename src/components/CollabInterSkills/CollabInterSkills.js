@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CollabInterSkills = ({ keywords }) => {
+const CollabInterSkills = ({ keywords }, {designation}) => {
   const [collabInterSkillsQuestions, setCollabInterSkillsQuestions] = useState([]);
 
   const generateCollabInterSkillsQuestions = () => {
