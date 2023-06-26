@@ -1,0 +1,169 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-image: url('bg-image.jpg');
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.App-header {
+  margin-bottom: 20px;
+  text-align: flex;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-container input {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.input-container label {
+  margin-bottom: 10px;
+}
+
+.input-container input {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.question-container {
+  margin-bottom: 25px;
+  background-color: #dkdkkg;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.question-container h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.question-container p {
+  margin-bottom: 5px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.question-container .question-list {
+  margin-top: 20px;
+}
+
+.question-container .question-list li {
+  list-style-type: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.question-container .question-list li:last-child {
+  border-bottom: none;
+}
+
+.question-container .question-list li .question {
+  font-weight: bold;
+}
+
+.question-container .question-list li .category {
+  color: #888888;
+  font-style: italic;
+}
+
+.question-container .question-list li .description {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 10px;
+  margin-left: 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.input-container label {
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+label[for="keywords"] {
+  margin-left: 5px;
+}
+
+.logo-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.logo-container img {
+  width: 100px;
+  height: auto;
+}
+
+li {
+  position: relative;
+}
+
+/* Carousel Styling */
+
+.carousel-root {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.carousel .slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.carousel .slide > div {
+  margin: 0 auto;
+}
+
+.carousel .control-dots {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.carousel .control-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #888888;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel .control-dots .dot.selected {
+  background-color: #007bff;
+}
