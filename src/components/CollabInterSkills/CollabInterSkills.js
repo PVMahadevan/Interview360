@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CollabInterSkills = ({ keywords }, {designation}) => {
+const CollabInterSkills = ({ keywords }) => {
   const [collabInterSkillsQuestions, setCollabInterSkillsQuestions] = useState([]);
 
   const generateCollabInterSkillsQuestions = () => {
-    // Make the API request to generate answers
+    // Make the API request to generate questions
     const apiUrl = '/v1/chat/completions';
     const payload = {
-      model: 'v0.2',
+      model: 'bud-v0.2',
       messages: [
         {
           role: 'user',
@@ -20,12 +20,12 @@ const CollabInterSkills = ({ keywords }, {designation}) => {
     axios
       .post(apiUrl, payload)
       .then((response) => {
-        // Process the response and extract the answers
-        const generatedCollabInterSkillsQuestions = response.data.choices[0].message.content;
+        // Process the response and extract the questions
+        const generatedCollabInterSkillsQuestions = response.data.choices[0].message.content.split('\n');
         setCollabInterSkillsQuestions(generatedCollabInterSkillsQuestions);
       })
       .catch((error) => {
-        console.error('Error generating keyword answers:', error);
+        console.error('Error generating keyword questions:', error);
       });
   };
 
@@ -34,7 +34,9 @@ const CollabInterSkills = ({ keywords }, {designation}) => {
       <h3>Collaboration & Interpersonal Skills</h3>
       <button onClick={generateCollabInterSkillsQuestions}>Generate C&I Questions</button>
       <ul>
-        {collabInterSkillsQuestions}
+        {collabInterSkillsQuestions.map((question, index) => (
+          <li key={index}>{question}</li>
+        ))}
       </ul>
     </div>
   );

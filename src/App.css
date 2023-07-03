@@ -28,6 +28,7 @@
 }
 
 .input-container label {
+  margin-right: 5px;
   margin-bottom: 10px;
 }
 
@@ -104,15 +105,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-.input-container label {
-  margin-right: 5px;
-  margin-bottom: 10px;
-}
-
-label[for="keywords"] {
-  margin-left: 5px;
-}
-
 .logo-container {
   position: absolute;
   top: 20px;
@@ -166,4 +158,27 @@ li {
 
 .carousel .control-dots .dot.selected {
   background-color: #007bff;
+}
+
+/* CSS for structuring the response */
+.response {
+  margin-top: 20px;
+}
+
+.response h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.response button {
+  margin-bottom: 10px;
+}
+
+.response ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.response li {
+  margin-bottom: 10px;
 }

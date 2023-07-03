@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const LeadershipSkills = ({ keywords }, {designation}) => {
+const LeadershipSkills = ({ keywords }) => {
   const [leadershipSkillsQuestions, setLeadershipSkillsQuestions] = useState([]);
 
   const generateLeadershipSkillsQuestions = () => {
     // Make the API request to generate questions
     const apiUrl = '/v1/chat/completions';
     const payload = {
-      model: 'v0.2',
+      model: 'bud-v0.2',
       messages: [
         {
           role: 'user',
@@ -21,7 +21,7 @@ const LeadershipSkills = ({ keywords }, {designation}) => {
       .post(apiUrl, payload)
       .then((response) => {
         // Process the response and extract the questions
-        const generatedLeadershipSkillsQuestions = response.data.choices[0].message.content;
+        const generatedLeadershipSkillsQuestions = response.data.choices[0].message.content.split('\n');
         setLeadershipSkillsQuestions(generatedLeadershipSkillsQuestions);
       })
       .catch((error) => {
@@ -35,7 +35,9 @@ const LeadershipSkills = ({ keywords }, {designation}) => {
       <button onClick={generateLeadershipSkillsQuestions}>Generate Leadership Skills Questions</button>
       <ul>
         {/* Render the questions using the leadershipSkillsQuestions state */}
-        {leadershipSkillsQuestions}
+        {leadershipSkillsQuestions.map((question, index) => (
+          <li key={index}>{question}</li>
+        ))}
       </ul>
     </div>
   );

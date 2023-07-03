@@ -1,23 +1,23 @@
-.skill-section {
-  margin-bottom: 25px;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
+/* CSS for structuring the response */
+.response {
+  margin-top: 20px;
 }
 
-.skill-section h3 {
+.response h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.response button {
   margin-bottom: 10px;
 }
 
-.skill-section ul {
-  list-style-type: disc;
-  margin-left: 20px;
+.response ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-.skill-section li {
+.response li {
   margin-bottom: 10px;
-  font-size: 16px;
-  line-height: 1.5;
 }
+

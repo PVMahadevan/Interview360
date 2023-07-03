@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AdaptabilityandFlexibility = ({ keywords }, {designation}) => {
+const AdaptabilityandFlexibility = ({ keywords }) => {
   const [adaptabilityFlexibilityQuestions, setAdaptabilityFlexibilityQuestions] = useState([]);
 
   const generateAdaptabilityFlexibilityQuestions = () => {
     // Make the API request to generate questions
     const apiUrl = '/v1/chat/completions';
     const payload = {
-      model: 'v0.2',
+      model: 'bud-v0.2',
       messages: [
         {
           role: 'user',
@@ -21,7 +21,7 @@ const AdaptabilityandFlexibility = ({ keywords }, {designation}) => {
       .post(apiUrl, payload)
       .then((response) => {
         // Process the response and extract the questions
-        const generatedAdaptabilityFlexibilityQuestions = response.data.choices[0].message.content;
+        const generatedAdaptabilityFlexibilityQuestions = response.data.choices[0].message.content.split('\n');
         setAdaptabilityFlexibilityQuestions(generatedAdaptabilityFlexibilityQuestions);
       })
       .catch((error) => {
@@ -32,10 +32,12 @@ const AdaptabilityandFlexibility = ({ keywords }, {designation}) => {
   return (
     <div className="response">
       <h3>Adaptability and Flexibility</h3>
-      <button onClick={generateAdaptabilityFlexibilityQuestions}>Generate Adaptability and FlexibilityQuestions</button>
+      <button onClick={generateAdaptabilityFlexibilityQuestions}>Generate Adaptability and Flexibility Questions</button>
       <ul>
         {/* Render the questions using the adaptabilityFlexibilityQuestions state */}
-        {adaptabilityFlexibilityQuestions}
+        {adaptabilityFlexibilityQuestions.map((question, index) => (
+          <li key={index}>{question}</li>
+        ))}
       </ul>
     </div>
   );
