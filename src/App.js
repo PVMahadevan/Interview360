@@ -15,6 +15,8 @@ import LeadershipSkills from './components/LeadershipSkills/LeadershipSkills';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
+
+
 const App = () => {
   const [designation, setDesignation] = useState('');
   const [keywords, setKeywords] = useState('');
@@ -32,12 +34,12 @@ const App = () => {
   const handleButtonClick = async () => {
     if (isFormValid) {
       try {
-        const response = await axios.post('/v1/chat/completions', {
+        const response = await axios.post('http://127.0.0.1:5000/search', {
           designation,
           keywords,
-        });
+        }, { withCredentials: true });
         setGeneratedQuestions(response.data);
-        setShowAnswerGenerator(true);
+//        setShowAnswerGenerator(true);
       } catch (error) {
         console.error('Failed to generate questions:', error);
       }
@@ -73,7 +75,7 @@ const App = () => {
           onChange={handleKeywordsChange}
         />
 
-        <button onClick={handleButtonClick}>Generate Questions</button>
+        <button onClick={handleButtonClick}>Search LinkedIn</button>
       </div>
 
       <div className="question-container">

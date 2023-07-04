@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const LeadershipSkills = ({ keywords }) => {
   const [leadershipSkillsQuestions, setLeadershipSkillsQuestions] = useState([]);
+  const [leadershipSkillsAnswers, setLeadershipSkillsAnswers] = useState([]);
 
   const generateLeadershipSkillsQuestions = () => {
     // Make the API request to generate questions
@@ -23,9 +24,35 @@ const LeadershipSkills = ({ keywords }) => {
         // Process the response and extract the questions
         const generatedLeadershipSkillsQuestions = response.data.choices[0].message.content.split('\n');
         setLeadershipSkillsQuestions(generatedLeadershipSkillsQuestions);
+
+        // Generate probable answers for the questions
+        generateProbableAnswers(generatedLeadershipSkillsQuestions);
       })
       .catch((error) => {
         console.error('Error generating leadership skills questions:', error);
+      });
+  };
+
+  const generateProbableAnswers = (questions) => {
+    // Make the API request to generate answers for the questions
+    const apiUrl = '/v1/chat/completions';
+    const payload = {
+      model: 'bud-v0.2',
+      messages: questions.map((question) => ({
+        role: 'user',
+        content: `Roleplay as an interview candidate and provide a well-thought-out response to the following question: ${question}`,
+      })),
+    };
+
+    axios
+      .post(apiUrl, payload)
+      .then((response) => {
+        // Process the response and extract the answers
+        const generatedLeadershipSkillsAnswers = response.data.choices.map((choice) => choice.message.content);
+        setLeadershipSkillsAnswers(generatedLeadershipSkillsAnswers);
+      })
+      .catch((error) => {
+        console.error('Error generating probable answers:', error);
       });
   };
 
@@ -33,12 +60,20 @@ const LeadershipSkills = ({ keywords }) => {
     <div className="response">
       <h3>Leadership Skills</h3>
       <button onClick={generateLeadershipSkillsQuestions}>Generate Leadership Skills Questions</button>
-      <ul>
-        {/* Render the questions using the leadershipSkillsQuestions state */}
-        {leadershipSkillsQuestions.map((question, index) => (
-          <li key={index}>{question}</li>
-        ))}
-      </ul>
+      <div className="questions-answers">
+        <ul>
+          {/* Render the questions using the leadershipSkillsQuestions state */}
+          {leadershipSkillsQuestions.map((question, index) => (
+            <li key={index}>{question}</li>
+          ))}
+        </ul>
+        <ul>
+          {/* Render the probable answers using the leadershipSkillsAnswers state */}
+          {leadershipSkillsAnswers.map((answer, index) => (
+            <li key={index}>{answer}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const AdaptabilityandFlexibility = ({ keywords }) => {
   const [adaptabilityFlexibilityQuestions, setAdaptabilityFlexibilityQuestions] = useState([]);
+  const [adaptabilityFlexibilityAnswers, setAdaptabilityFlexibilityAnswers] = useState([]);
 
   const generateAdaptabilityFlexibilityQuestions = () => {
     // Make the API request to generate questions
@@ -23,9 +24,35 @@ const AdaptabilityandFlexibility = ({ keywords }) => {
         // Process the response and extract the questions
         const generatedAdaptabilityFlexibilityQuestions = response.data.choices[0].message.content.split('\n');
         setAdaptabilityFlexibilityQuestions(generatedAdaptabilityFlexibilityQuestions);
+
+        // Generate probable answers for the questions
+        generateProbableAnswers(generatedAdaptabilityFlexibilityQuestions);
       })
       .catch((error) => {
         console.error('Error generating adaptability and flexibility questions:', error);
+      });
+  };
+
+  const generateProbableAnswers = (questions) => {
+    // Make the API request to generate answers for the questions
+    const apiUrl = '/v1/chat/completions';
+    const payload = {
+      model: 'bud-v0.2',
+      messages: questions.map((question) => ({
+        role: 'user',
+        content: `Roleplay as an interview candidate and provide a well-thought-out response to the following question: ${question}`,
+      })),
+    };
+
+    axios
+      .post(apiUrl, payload)
+      .then((response) => {
+        // Process the response and extract the answers
+        const generatedAdaptabilityFlexibilityAnswers = response.data.choices.map((choice) => choice.message.content);
+        setAdaptabilityFlexibilityAnswers(generatedAdaptabilityFlexibilityAnswers);
+      })
+      .catch((error) => {
+        console.error('Error generating probable answers:', error);
       });
   };
 
@@ -33,12 +60,20 @@ const AdaptabilityandFlexibility = ({ keywords }) => {
     <div className="response">
       <h3>Adaptability and Flexibility</h3>
       <button onClick={generateAdaptabilityFlexibilityQuestions}>Generate Adaptability and Flexibility Questions</button>
-      <ul>
-        {/* Render the questions using the adaptabilityFlexibilityQuestions state */}
-        {adaptabilityFlexibilityQuestions.map((question, index) => (
-          <li key={index}>{question}</li>
-        ))}
-      </ul>
+      <div className="questions-answers">
+        <ul>
+          {/* Render the questions using the adaptabilityFlexibilityQuestions state */}
+          {adaptabilityFlexibilityQuestions.map((question, index) => (
+            <li key={index}>{question}</li>
+          ))}
+        </ul>
+        <ul>
+          {/* Render the probable answers using the adaptabilityFlexibilityAnswers state */}
+          {adaptabilityFlexibilityAnswers.map((answer, index) => (
+            <li key={index}>{answer}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
