@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 const CollabInterSkills = ({ keywords }) => {
   const [collabInterSkillsQuestions, setCollabInterSkillsQuestions] = useState([]);
@@ -58,8 +59,7 @@ const CollabInterSkills = ({ keywords }) => {
 
   return (
     <div className="response">
-      <h3>Collaboration & Interpersonal Skills</h3>
-      <button onClick={generateCollabInterSkillsQuestions}>Generate C&I Questions</button>
+              <Button variant="primary" onClick={generateCollabInterSkillsQuestions}>Generate C&I</Button>
        <div className="questions-answers">
                     <ul style={{ textAlign: 'left' }}>
                       {/* Render the questions using the adaptabilityFlexibilityQuestions state */}

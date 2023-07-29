@@ -11,12 +11,17 @@ import ContinuousLearning from './components/ContinuousLearning/ContinuousLearni
 import ProblemSolvingSkills from './components/ProblemSolvingSkills/ProblemSolvingSkills';
 import AdaptabilityandFlexibility from './components/AdaptabilityandFlexibility/AdaptabilityandFlexibility';
 import LeadershipSkills from './components/LeadershipSkills/LeadershipSkills';
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const App = () => {
   const [designation, setDesignation] = useState('');
   const [keywords, setKeywords] = useState('');
   const [generatedQuestions, setGeneratedQuestions] = useState([]);
-  const [showAnswerGenerator, setShowAnswerGenerator] = useState(false);
+
 
   const skillsData = [
     {
@@ -72,7 +77,6 @@ const App = () => {
         // Update the state with the generated questions
         setGeneratedQuestions(response.data);
         // Set showAnswerGenerator to true to display the generated questions
-        setShowAnswerGenerator(true);
       } catch (error) {
         console.error('Failed to search LinkedIn:', error);
       }
@@ -92,8 +96,8 @@ const App = () => {
       <header className="App-header">
         <div className="logo-container">
           <img src={CompanyLogo} alt="Logo" />
-          {!showAnswerGenerator && <h1 className="interview-title">Interview360</h1>}
         </div>
+        <p className="interview_logo">Interview 360</p>
       </header>
 
       <div className="input-container">
@@ -102,7 +106,7 @@ const App = () => {
           <input
             type="text"
             id="designation"
-            value={designation}
+            value={designation} required
             onChange={handleDesignationChange}
           />
 
@@ -110,29 +114,28 @@ const App = () => {
           <input
             type="text"
             id="keywords"
-            value={keywords}
+            value={keywords} required
             onChange={handleKeywordsChange}
           />
         </div>
-
-        <button onClick={handleButtonClick}>Search LinkedIn</button>
+        <Button variant="primary" className="search_linkedin" onClick={handleButtonClick}>Search LinkedIn</Button>
       </div>
 
-      <div className="question-container">
-        <div className="list-group">
-          {skillsData.map((skill) => (
-            <button
-              key={skill.name}
-              className="list-group-item list-group-item-action custom-button"
-              onClick={() => handleSkillButtonClick(skill.name)}
-            >
-              {skill.component}
-            </button>
-          ))}
-        </div>
-      </div>
+ <Row xs={1} md={2} className="g-4">
+      {skillsData.map((skill, idx) => (
+        <Col key={idx}>
+          <Card>
+            <Card.Body>
+              <Card.Text>
+                {skill.component}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
 
-      {isFormValid && showAnswerGenerator && (
+      {isFormValid && (
         <div className="answer-container">
           <h2>Generated Questions:</h2>
           <div className="question-list">

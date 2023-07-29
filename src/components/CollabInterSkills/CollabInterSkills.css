@@ -1,27 +1,6 @@
-/* collab-inter-skills.css */
-
-.response {
-  margin-top: 20px;
-}
-
 .response h3 {
   font-size: 18px;
   font-weight: bold;
-}
-
-.response button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.response button:hover {
-  background-color: #0069d9;
 }
 
 .response ul {

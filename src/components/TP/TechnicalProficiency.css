@@ -1,17 +1,7 @@
-/* CSS for structuring the response */
-.response {
-  margin-top: 20px;
-}
-
 .response h3 {
   font-size: 20px;
   font-weight: bold;
 }
-
-.response button {
-  margin-bottom: 10px;
-}
-
 .response ul {
   list-style-type: none;
   padding: 0;

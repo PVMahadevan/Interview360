@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 const LeadershipSkills = ({ keywords }) => {
   const [leadershipSkillsQuestions, setLeadershipSkillsQuestions] = useState([]);
@@ -58,8 +59,7 @@ const LeadershipSkills = ({ keywords }) => {
 
   return (
     <div className="response">
-      <h3>Leadership Skills</h3>
-      <button onClick={generateLeadershipSkillsQuestions}>Generate Leadership Skills Questions</button>
+       <Button variant="primary" onClick={generateLeadershipSkillsQuestions}>Generate Leadership Skills</Button>
        <div className="questions-answers">
                     <ul style={{ textAlign: 'left' }}>
                       {/* Render the questions using the adaptabilityFlexibilityQuestions state */}

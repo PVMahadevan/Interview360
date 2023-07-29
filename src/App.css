@@ -4,22 +4,17 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  min-height: 100vh; /* Set the container to at least cover the viewport height */
+  min-height: 80vh; /* Set the container to at least cover the viewport height */
   overflow-y: auto; /* Enable vertical scrolling for the content inside .App */
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background-image: url('bg-image.jpg');
+  background-image: url('background.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
   background-attachment: fixed; /* Optional: Keep the background fixed while scrolling */
 }
 
 .App-header {
-  margin-bottom: 20px;
-  text-align: center;
   position: absolute;
   top: 20px;
   left: 50%;
@@ -30,34 +25,18 @@ body {
 .input-container {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
-  position: sticky;
-  top: 100px; /* Adjust the distance from the top as needed */
-  z-index: 999; /* Set a high z-index to ensure it's displayed above other elements */
+  min-height:20vh;
 }
 
-
 .input-container input {
-  margin-bottom: 10px;
-  padding: 10px;
+  margin: 9px;
+  padding: 6px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 6px;
 }
 
-.input-container label {
-  margin-right: 5px;
-  margin-bottom: 10px;
-}
-
-.input-container input {
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
 .question-container {
-  margin-bottom: 25px;
-  padding: 20px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 800px;
@@ -106,43 +85,6 @@ body {
   font-size: 14px;
 }
 
-button {
-  margin-top: 0px;
-  margin-left: 5px;
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-.custom-button {
-  margin-top: 0px;
-  margin-left: 5px;
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* You can also add hover and active styles if needed */
-.custom-button:hover {
-  background-color: #0056b3;
-}
-
-.custom-button:active {
-  background-color: #003f80;
-}
-
 .logo-container {
   display: flex;
   align-items: center;
@@ -156,29 +98,26 @@ button:hover {
 .logo-container img {
   width: 100px;
   height: auto;
-
+}
+label{
+  font-weight: bold;
+}
+.interview_logo{
+    position: absolute;
+    font-size: 12px;
+    padding: 4%;
+    left: 39px;
 }
 
 li {
   position: relative;
 }
-
-/* CSS for structuring the response */
-.response {
-  margin-top: 20px;
-}
-
 .response h3 {
   font-size: 50px;
   font-color: black;
   font-weight: bold;
   color: black
 }
-
-.response button {
-  margin-bottom: 10px;
-}
-
 .response ul {
   list-style-type: none;
   padding: 0;
@@ -198,82 +137,7 @@ li {
 .logo-container img {
   width: 200px; /* Adjust the size as desired */
 }
-
-.interview-title {
-  text-align: center;
-  margin-left: 400px;
-}
-
-.input-container {
-  display: flex;
-  align-items: center;
-      position: fixed;
-      top: 150px;
-      z-index: 9999;
-}
-
-.input-container label {
-  margin-left: 5px;
-}
-
-
-.list-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px; /* Adjust the gap as per your preference */
-}
-
-.list-group button {
-  /* Add your button styles here */
-  padding: 10px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
-  text-align: left;
-  cursor: pointer;
-}
-
-.list-group button:hover {
-  background-color: #ebebeb;
-}
-
-/* Add any other CSS styles you need for the buttons */
-
-/* Add any custom CSS styles here */
-.list-group-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px 20px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.list-group-item:hover {
-  background-color: #e0e0e0;
-}
-
-.list-group-item:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* You can add more specific styles for active or selected buttons if needed */
-
-.answer-container {
-  margin-top: 20px;
-}
-
-.question-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.question-item {
-  margin-bottom: 20px;
+.search_linkedin{
+    position: relative;
+    margin: 6px;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 const ContinuousLearning = ({ keywords }) => {
   const [continuousLearningQuestions, setContinuousLearningQuestions] = useState([]);
@@ -58,8 +59,7 @@ const ContinuousLearning = ({ keywords }) => {
 
   return (
     <div className="response">
-      <h3>Continuous Learning Mindset</h3>
-      <button onClick={generateContinuousLearningQuestions}>Generate Continuous Learning Questions</button>
+       <Button variant="primary" onClick={generateContinuousLearningQuestions}>Generate Continuous Learning</Button>
        <div className="questions-answers">
                     <ul style={{ textAlign: 'left' }}>
                       {/* Render the questions using the adaptabilityFlexibilityQuestions state */}

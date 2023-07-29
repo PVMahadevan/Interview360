@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 const TechnicalProficiency = ({ keywords }, { designation }) => {
   const [questions, setQuestions] = useState([]);
@@ -75,7 +76,7 @@ const TechnicalProficiency = ({ keywords }, { designation }) => {
   return (
     <div className="response">
       <h3>Technical Proficiency</h3>
-      <button onClick={generateQuestions}>Generate Technical Proficiency Questions</button>
+      <Button variant="primary" onClick={generateQuestions}>Generate Technical Proficiency</Button>
       <div className="questions-answers">
         <ul style={{ textAlign: 'left' }}>
           {/* Render the questions using the questions state */}
