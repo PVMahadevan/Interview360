@@ -1,0 +1,27 @@
+/* ProblemSolvingSkills.css */
+
+.response {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.response h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.response button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.response button:hover {
+  background-color: #0056b3;
+}
+
+

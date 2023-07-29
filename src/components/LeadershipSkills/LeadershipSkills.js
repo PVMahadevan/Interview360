@@ -26,55 +26,59 @@ const LeadershipSkills = ({ keywords }) => {
         setLeadershipSkillsQuestions(generatedLeadershipSkillsQuestions);
 
         // Generate probable answers for the questions
-        generateProbableAnswers(generatedLeadershipSkillsQuestions);
+//        generateProbableAnswers(generatedLeadershipSkillsQuestions);
       })
       .catch((error) => {
         console.error('Error generating leadership skills questions:', error);
       });
   };
 
-  const generateProbableAnswers = (questions) => {
-    // Make the API request to generate answers for the questions
-    const apiUrl = '/v1/chat/completions';
-    const payload = {
-      model: 'bud-v0.2',
-      messages: questions.map((question) => ({
-        role: 'user',
-        content: `Roleplay as an interview candidate and provide a well-thought-out response to the following question: ${question}`,
-      })),
-    };
-
-    axios
-      .post(apiUrl, payload)
-      .then((response) => {
-        // Process the response and extract the answers
-        const generatedLeadershipSkillsAnswers = response.data.choices.map((choice) => choice.message.content);
-        setLeadershipSkillsAnswers(generatedLeadershipSkillsAnswers);
-      })
-      .catch((error) => {
-        console.error('Error generating probable answers:', error);
-      });
-  };
+//  const generateProbableAnswers = (questions) => {
+//    // Make the API request to generate answers for the questions
+//    const apiUrl = '/v1/chat/completions';
+//    const payload = {
+//      model: 'bud-v0.2',
+//      messages: questions.map((question) => ({
+//        role: 'user',
+//        content: `Roleplay as an interview candidate and provide a well-thought-out response to the following question: ${question}`,
+//      })),
+//    };
+//
+//    axios
+//      .post(apiUrl, payload)
+//      .then((response) => {
+//        // Process the response and extract the answers
+//        const generatedLeadershipSkillsAnswers = response.data.choices.map((choice) => choice.message.content);
+//        setLeadershipSkillsAnswers(generatedLeadershipSkillsAnswers);
+//      })
+//      .catch((error) => {
+//        console.error('Error generating probable answers:', error);
+//      });
+//  };
 
   return (
     <div className="response">
       <h3>Leadership Skills</h3>
       <button onClick={generateLeadershipSkillsQuestions}>Generate Leadership Skills Questions</button>
-      <div className="questions-answers">
-        <ul>
-          {/* Render the questions using the leadershipSkillsQuestions state */}
-          {leadershipSkillsQuestions.map((question, index) => (
-            <li key={index}>{question}</li>
-          ))}
-        </ul>
-        <ul>
-          {/* Render the probable answers using the leadershipSkillsAnswers state */}
-          {leadershipSkillsAnswers.map((answer, index) => (
-            <li key={index}>{answer}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
+       <div className="questions-answers">
+                    <ul style={{ textAlign: 'left' }}>
+                      {/* Render the questions using the adaptabilityFlexibilityQuestions state */}
+                      {leadershipSkillsQuestions.map((question, index) => (
+                        <React.Fragment key={index}>
+                          <li>{question}</li>
+                          {leadershipSkillsAnswers[index] && (
+                            <li>
+                              <strong>Answer: </strong>
+                              {leadershipSkillsAnswers[index].split('\n').map((paragraph, index) => (
+                                <p key={index}>{paragraph}</p>
+                              ))}
+                            </li>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
   );
 };
 
